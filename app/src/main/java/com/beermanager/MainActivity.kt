@@ -1,4 +1,4 @@
-package com.example.beermanager
+package com.beermanager
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
