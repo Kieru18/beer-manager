@@ -25,21 +25,20 @@ abstract class BeerManagerDatabase : RoomDatabase() {
     abstract fun styleDao(): StyleDao
 
     companion object {
-        @Volatile
+//        @Volatile
         private var INSTANCE: BeerManagerDatabase? = null
 
-        fun getDatabase(context: Context): BeerManagerDatabase {
-            return INSTANCE ?: synchronized(this) {
-                val instance = Room.databaseBuilder(
-                    context.applicationContext,
-                    BeerManagerDatabase::class.java,
-                    "database.db"
-                )
-                    .createFromAsset("database.db")
-                    .build()
-                INSTANCE = instance
-                instance
+        fun getInstance(context: Context): BeerManagerDatabase {
+            if (INSTANCE == null) {
+                synchronized(BeerManagerDatabase::class) {
+                    INSTANCE = Room.databaseBuilder(
+                        context.applicationContext,
+                        BeerManagerDatabase::class.java,
+                        "database.db"
+                    ).build()
+                }
             }
+            return INSTANCE!!
         }
     }
 }

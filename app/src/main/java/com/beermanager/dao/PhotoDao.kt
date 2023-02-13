@@ -13,9 +13,6 @@ interface PhotoDao {
     @Query("SELECT * FROM photos")
     fun getAll(): List<Photo>
 
-    @Query("SELECT * FROM photos WHERE beer_id = :beerId")
-    fun getByBeerId(beerId: Long): List<Photo>
-
     @Insert
     fun insert(photo: Photo)
 
