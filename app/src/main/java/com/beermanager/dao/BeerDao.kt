@@ -1,5 +1,6 @@
 package com.beermanager.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
@@ -11,7 +12,7 @@ import com.beermanager.entities.Beer
 @Dao
 interface BeerDao {
     @Query("SELECT * FROM beers")
-    fun getAll(): List<Beer>
+    fun getAll(): LiveData<List<Beer>>
 
     @Insert
     fun insert(beer: Beer)

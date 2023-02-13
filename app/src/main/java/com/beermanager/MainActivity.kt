@@ -3,6 +3,7 @@ package com.beermanager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.beermanager.dao.BeerDao
@@ -21,18 +22,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Initialize database and DAO
         database = BeerManagerDatabase.getInstance(this)
         beerDao = database.beerDao()
 
-        // Launch coroutine to get all beers from the database
-        CoroutineScope(Dispatchers.IO).launch {
-            val beers = beerDao.getAll()
-            withContext(Dispatchers.Main) {
-                // Update UI with beers
-                updateUI(beers)
-            }
-        }
+        beerDao.getAll().observe(this, Observer<List<Beer>> { beers ->
+            Log.d("MainActivity", "Beers retrieved by DAO from database: $beers")
+            updateUI(beers)
+        })
     }
 
     private fun updateUI(beers: List<Beer>) {
@@ -45,6 +41,8 @@ class MainActivity : AppCompatActivity() {
         // Set adapter and layout manager for RecyclerView
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
+
+        Log.d("MainActivity", "Beers retrieved by adapter from database: $beers")
     }
 }
 

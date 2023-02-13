@@ -5,6 +5,7 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
+
 @Entity(tableName = "photos",
     foreignKeys = [
         ForeignKey(entity = Beer::class,
@@ -17,7 +18,7 @@ data class Photo(
     val photoId: Long,
 
     @ColumnInfo(name = "beer_id")
-    val beerId: Long,
+    val beerId: Long?,
 
     val photo: ByteArray
 )

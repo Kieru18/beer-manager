@@ -1,5 +1,6 @@
 package com.beermanager.entities
 
+import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
@@ -19,12 +20,13 @@ data class Beer(
     @ColumnInfo(name = "beer_id")
     val beerId: Long,
 
-    val name: String,
+    val name: String?,
 
     @ColumnInfo(name = "style_id")
-    val styleId: Long,
+    val styleId: Long?,
 
     @ColumnInfo(name = "brewery_id")
-    val breweryId: Long
+    val breweryId: Long?
 )
+
 
