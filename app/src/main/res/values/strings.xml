@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Beer manager</string>
+    <string name="search">Search</string>
+    <string name="all_beers">All Beers</string>
 </resources>
