@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 data class Style(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "style_id")
-    val styleId: Long = 0,
+    val styleId: Long,
 
     val name: String,
 
