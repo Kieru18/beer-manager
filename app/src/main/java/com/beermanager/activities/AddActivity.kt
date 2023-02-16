@@ -4,9 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
 import com.beermanager.R
-class AllBeersActivity : AppCompatActivity() {
+
+class AddActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_all_beers)
+        setContentView(R.layout.activity_add)
     }
 }

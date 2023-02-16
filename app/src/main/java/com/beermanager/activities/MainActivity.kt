@@ -22,5 +22,11 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, AllBeersActivity::class.java)
             startActivity(intent)
         }
+
+        val addBeersButton = findViewById<Button>(R.id.add_beers_button)
+        addBeersButton.setOnClickListener {
+            val intent = Intent(this, AddActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
